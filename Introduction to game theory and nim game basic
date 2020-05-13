@@ -1,0 +1,35 @@
+
+“ Given a number of piles in which each pile contains some numbers of coins. In each turn, a player can choose only one pile and remove any number of stones (at least one) from only that pile. The player who cannot move is considered to lose the game (i.e., one who take the last stone is the winner). ”
+
+This is the game of nim ( very famous game) whose result can be predicted previously by using game theory . First you have to know use of xor .Assuming you know about operation of xor properly . Let’s take an example of four piles and xor of their values ..
+
+10101=21−>Firstpile(A)containing21coins 
+
+01001=09−>Secondpile(B)containing9coins 
+
+01100=12−>Thirdpile(C)containing12coins 
+
+01011=11−>Fourthpile(D)containing11coins 
+
+11011=27(Xsum). 
+
+From here , I will talk about nil game only assuming these four piles . Xsum states the xor of those coins of four piles . Now I will talk about a couple of deductions about bitwise XOR necessary for realizing this game strategy.
+
+If Xsum of some numbers is zero ,then the Xsum of those numbers after taking some coins from a particular pile (as your wish) will be non-zero .
+If Xsum of some numbers is non-zero ,then the Xsum of those numbers can be made zero after taking some coins( particular value of coins ) from a particular pile [ evaluated by game theory ] .
+So , here one splendid relation lies between Winner and Xsum of any state of the game .
+
+If both A and B play optimally (i.e- they don’t make any mistakes and take (fixed)coins from particular pile according to game theory ), then the player starting first is guaranteed to win if the Xor-Sum at the beginning of the game is non-zero. Otherwise, if the Nim-Sum evaluates to zero, then player A will lose definitely.
+
+So , here assuming both will lead a move to take coins according to theory . So here one should take coins and make xor sum zero after one’s move ( if before taking coins from a pile , Xsum of coins are not zero) . Here making Xsum zero is safe position for one to be winner . Because when you all time will try to make Xsum of coins zero(0) by taking some coins from a particular pile ,then it will lead you that state of game containing only one pile with coins .Then in that state you can take all coins of that pile and make a state of no move for other player i.e. you are winner . But here is a question !!
+
+How will you evaluate the value of coins of particular pile which will be subtracted from that pile by you to make Xsum zero ?
+
+Now behold there over my four numbers written above .Think our current Xsum is 27 like above .We have to make this zero by taking some coins from anyone of (A , B , C, D ) piles .
+
+So , we have to find the leftmost position of binary table above whose column has odd times one(1) [ that position where our most significant position of Xsum is on ] ? .We have to make Xsum zero .So obviously we have to take that position of most significant into account to proceed our strategy . Now you have to take some coins from our defined pile ( A ) . But how many coins will you have to take ? Think cleverly . To make Xsum zero , the columns of containing odd times one (1) should be even ,right ? So , the columns containing odd times one (1) but hold zero (0) in pile’s (A) position [ suppose these positions of A will be called Z ] and the columns of containing odd times one (1) and also hold 1 in pile’s (A) position [ suppose these positions of A will be called O ] .
+
+So Z positions should be made one (1) and O positions should be made zero (0) of pile A .Assuming all facts are clear till here . So to make this , we have to make xor of recent Xsum (27) with value of A (21) i.e. ( piles( A ) ^Xor_sum ) that makes sense to us that in this turn to make current Xsum zero piles ( A ) - ( piles( A ) ^Xor_sum ) coins should be taken by player . So it is obvious that it is always possible to take a move to make Xsum zero from non-zero .And In this process if two players proceed this game , the winning fact will depend upon two factors i.e.
+
+The player who starts first.
+The initial configuration of the piles ( Xsum of coins of piles ).
