@@ -59,8 +59,8 @@ int main()
 		    ans=0;
 			cin>>x>>y;
 			ans=sg(x,y);
-            if(ans) cout<<"Alice"<<endl;
-            else cout<<"Bob"<<endl;
+            if(ans) cout<<"First"<<endl;
+            else cout<<"Second"<<endl;
 		}
 	    return 0;
 }
