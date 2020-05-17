@@ -3,7 +3,7 @@
 /// turned into normal nim game
 /// Very Basic understanding of Game of Nim  
 /// When you try to make Xsum zero ,then all time try to reduce some numbers from those numbers with on-bit on position
-/// where position is a right most position of binary number where the number of ones is odd 
+/// where position is a left most position of binary number where the number of ones is odd 
 
 #include<bits/stdc++.h>
 
