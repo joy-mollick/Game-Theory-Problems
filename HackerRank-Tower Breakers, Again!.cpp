@@ -1,4 +1,25 @@
+/*
 
+Assuming you know very well about finding  grandy value of every state . 
+Now think about , a normal number 105 .
+
+Its all divisors are 
+
+` 1, 3, 5, 7, 15, 21, 35, 105`
+
+So ,  Our  tower with height` (105)`  can be broken into `105/Z=35(Y)` towers with all have equal size `Z=3` . So grandy value of a state is the mex of all the possible states which can be reached by a valid move (mex is the minimum state that is not possible to be reached from that particular state ) .
+
+ Here , when we will break a tower ` (105)`  into `35(Y)` towers with size of all `3(Z)` .Then the grandy value of ` (105)` will be `G(105)`.
+ 
+ Where `G(105)`  will be xor of all other grandy value of child towers of this father tower .
+ 
+ `G(105)` = `G(3)` ^ `G(3)`^`G(3)`^`G(3)`......... till  `35(Y)` times . But  we can easily catch that if `Y` is odd then no need to xor of all `Z` . It will be obviously only `G(3)` as rest of all are even in number ( canceled out by the xor ) .
+ 
+ So , `G(105)`= `G(3)` when , we will break it into `35(Y)` towers with size of all `3(Z)` only and not take other possible state's grandy vale   . 
+ 
+ But we can break it into its all divisors according to question  . More fromally ,we have to take into account all possible state's grandy value .So use sieve to calculate all divisors of a number till `100000` previously.  Now according to question grandy of  `(105)` will be mex of the set  { ` G(1), G(3),G( 5), G(7), G(15), G(21), G(35),G( 105 )` } and another fact is  when `Y` will be even for any `Z` ,then Xor will be zero i.e. `G(Z) =0` . I hope all are clear . My pseudocode to find grandy recursively 
+ 
+ */
 
 /// Nice problem based on grandy value 
 
